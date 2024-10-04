@@ -35,6 +35,10 @@ public class LocalizationTest extends LinearOpMode {
 
             telemetry.addData("x", drive.pose.position.x);
             telemetry.addData("y", drive.pose.position.y);
+            telemetry.addData("gamepad 1 left stick y", gamepad1.left_stick_y);
+            telemetry.addData("gamepad 1 left stick x", gamepad1.left_stick_x);
+            telemetry.addData("gamepad 1 right stick x", gamepad1.right_stick_x);
+
             telemetry.addData("heading (deg)", Math.toDegrees(drive.pose.heading.toDouble()));
             telemetry.update();
 

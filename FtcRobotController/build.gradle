@@ -23,4 +23,8 @@ android {
     namespace = 'com.qualcomm.ftcrobotcontroller'
 }
 
+dependencies {
+    implementation 'com.github.jdhs-ftc:road-runner-ftc-otos:a02ba3fe51'
+}
+
 apply from: '../build.dependencies.gradle'
