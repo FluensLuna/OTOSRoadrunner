@@ -33,10 +33,11 @@ public class TestAuto2 extends LinearOpMode {
         // Delcare Trajectory as such
         Action TrajectoryAction1 = drive.actionBuilder(drive.pose)
                 .lineToX(10)
+                .turn(Math.toRadians(180))
                 .build();
 
         Action TrajectoryAction2 = drive.actionBuilder(new Pose2d(15,20,0))
-                .splineTo(new Vector2d(5,5), Math.toRadians(90))
+                .lineToX(0)
                 .build();
 
 
@@ -72,10 +73,10 @@ public class TestAuto2 extends LinearOpMode {
                                 (telemetryPacket) -> { // Run some action
                                     return false;
                                 }
-                        ),
-                        drive.actionBuilder(new Pose2d(15,10,Math.toRadians(125))) // Another way of running a trajectory (not recommended because trajectories take time to build and will slow down your code, always try to build them beforehand)
-                                .splineTo(new Vector2d(25, 15), 0)
-                                .build()
+                        )
+//                        drive.actionBuilder(new Pose2d(15,10,Math.toRadians(125))) // Another way of running a trajectory (not recommended because trajectories take time to build and will slow down your code, always try to build them beforehand)
+//                                .splineTo(new Vector2d(25, 15), 0)
+//                                .build()
 
                 )
         );
