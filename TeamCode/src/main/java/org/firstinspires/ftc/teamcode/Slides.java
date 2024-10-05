@@ -6,13 +6,16 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.arcrobotics.ftclib.controller.PIDController;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+
+import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 
 @Config
 @TeleOp
 public class Slides extends OpMode {
     private PIDController pidController;
-    public static double p = 0, i = 0, d = 0, f = 0;
+    public static double p = 0.005, i = 0.01, d = 0.001, f = .1;
     public static int target = 0;
 
     private DcMotorEx slideMotor;
@@ -23,6 +26,8 @@ public class Slides extends OpMode {
         pidController = new PIDController(p,i,d);
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
         slideMotor = hardwareMap.get(DcMotorEx.class, "slideMotor");
+        slideMotor.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+        slideMotor.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     @Override
@@ -37,6 +42,8 @@ public class Slides extends OpMode {
         telemetry.addData("slidePose: ", slidePose);
         telemetry.addData("target: ", target);
         telemetry.addData("pid: ", pid);
+        telemetry.addData("power: ", power);
+        telemetry.addData("current: ", slideMotor.getCurrent(CurrentUnit.AMPS));
         telemetry.update();
     }
 
