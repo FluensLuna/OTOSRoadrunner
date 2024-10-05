@@ -6,11 +6,12 @@ import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.SparkFunOTOSDrive;
 import org.firstinspires.ftc.teamcode.TankDrive;
-
+@TeleOp(name="therealspline")
 public final class SplineTest extends LinearOpMode {
     @Override
     public void runOpMode() {
@@ -37,8 +38,8 @@ public final class SplineTest extends LinearOpMode {
         } else if (TuningOpModes.DRIVE_CLASS.equals(SparkFunOTOSDrive.class)) {
             SparkFunOTOSDrive drive = new SparkFunOTOSDrive(hardwareMap, beginPose);
             Action TrajectionAction1 = drive.actionBuilder(beginPose)
-                    .splineTo(new Vector2d(8, 8), Math.PI / 2)
-                    .splineTo(new Vector2d(0, 16), Math.PI)
+                    .splineTo(new Vector2d(4, 4), Math.PI / 2)
+                    .splineTo(new Vector2d(6, 8), Math.PI)
                     .build();
             while (opModeIsActive()) {
                 Actions.runBlocking(TrajectionAction1);
